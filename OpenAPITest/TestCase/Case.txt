@@ -3,4 +3,3 @@ Caseid	CaseName	handle	订阅表名称和字段	推送表的名称	是否需要�
 27	订阅新表，推送新表的数据	PushSourceKeyHandler	{"qual_permission":None}	{"qual_permission":None}	False	None	1
 10	订阅老表+新表，推送老表的数据	StandardHandler	{"qual_permission":None, "qyxg_xzxk":None, "qual_pub_permission":None, "pub_permission":None}	 {"qyxg_xzxk":None}	False	None	1
 42	订阅多张老表+新表，推送新表的数据	UnionHandler	{"qual_permission":None, "qyxg_xzxk":None, "qual_pub_permission":None, "pub_permission":None}	{"qual_permission":None}	False	None	3
-43	订阅老表，推送新表的数据	UnionHandler	{"qyxx_frposition":None, "qyxx_frinv":None, "qyxx_entinv":None}	{"qyxx_element_frposition":None}	False	None	0
