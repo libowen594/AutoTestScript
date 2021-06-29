@@ -193,3 +193,22 @@ class DOP:
                     modify_config("PusherInfo", "test_pusher_id", task_id)  # 修改配置文件中PusherInfo的test_pusher_id
                     modify_config("application-spark-offline", "id", task_id)  # 修改配置文件中application-spark-offline的id
                     modify_properties("offline.push.subid", str(task_id))  # 修改推送程序的配置文件中的offline.push.subid
+
+    def getDirectory(self, directory_id, qyxx_id):
+        """
+        创建订阅
+        :param directory_id: 订阅名录的id
+        :param qyxx_id: 被查询的qyxx_id
+        :return: 名录中qyxx_id list
+        """
+        data = {
+            "directoryId": directory_id,
+            "page_no": 0,
+            "page_size": 10,
+            "query": qyxx_id
+        }
+        response = self.s.get(url="http://" + self.host + ":" + self.port + "/openapi/directory/namelists.do", params=data)
+        if response.status_code == 200:
+            return response.json()["total"]
+        else:
+            raise Exception("数据开放平台服务器异常")

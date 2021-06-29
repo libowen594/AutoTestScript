@@ -20,6 +20,7 @@ import json
 logger = get_logger(__name__)
 pushCaseToExcel(sheet_name="AutoPush")
 testData = Excel().get_sheet_values(sheet_name="AutoPush")
+row = 1
 
 
 def Producer(hosts, topic, data):
@@ -82,7 +83,9 @@ class AutoPushTest(unittest.TestCase):
 
     @ddt.data(*testData)
     def test_AutoPush(self, data):
-        self.row += 1
+        global row
+        row += 1
+        self.row = row
         self.send_data = {}
         self.case_id = data["Caseid"]
         self.case_name = data["CaseName"]

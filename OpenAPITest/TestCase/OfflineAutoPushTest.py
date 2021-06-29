@@ -19,6 +19,7 @@ import os
 logger = get_logger(__name__)
 pushCaseToExcel(sheet_name="OfflineAutoPush")
 testData = Excel().get_sheet_values(sheet_name="OfflineAutoPush")
+row = 1
 
 
 @ddt.ddt
@@ -58,7 +59,9 @@ class OfflineAutoPushTest(unittest.TestCase):
 
     @ddt.data(*testData)
     def test_OfflineAutoPush(self, data):
-        self.row += 1
+        global row
+        row += 1
+        self.row = row
         self.pushData = {}
         self.case_id = data["Caseid"]
         self.case_name = data["CaseName"]
