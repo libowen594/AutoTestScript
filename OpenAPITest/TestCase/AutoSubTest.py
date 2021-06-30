@@ -24,6 +24,7 @@ def Producer(hosts, topic, data):
     except Exception:
         return False
 
+
 @ddt.ddt
 class AutoSubTest(unittest.TestCase):
     @classmethod
